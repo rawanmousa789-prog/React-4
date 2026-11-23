@@ -1,0 +1,83 @@
+.task .layout{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* filtered tasks */
+.task .btns{
+  flex-direction: column;
+  gap:15px;
+}
+.task .btns button{
+  background: #19a8e3;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.08s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 18px rgba(25,168,227,0.25);
+  border: none;
+  border-radius: 10px;
+  padding : 10px 8px ;
+}
+.task .btns button:hover{
+  filter: brightness(0.85);
+}
+.task .btns button:active{
+  transform: scale(0.98);
+  box-shadow: none;
+}
+.task select{
+  border: none;
+  padding : 10px 8px ;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #19a8e3;
+  color: #fff;
+}
+
+
+/* all tasks */
+.task .all-tasks{
+  display: flex;
+
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* one task */
+.task .all-tasks .one-task{
+  border: 2px solid #19a6e3;
+  border-radius: 10px;
+  padding: 10px;
+  margin:40px 30px;
+  width: 280px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  gap: 10px;
+  transition: box-shadow 0.2s ease, border-left 0.2s ease;
+}
+.task .all-tasks .one-task:hover{
+  border: 3px solid #19a6e3;
+  box-shadow: 0 10px 18px rgba(25,168,227,0.25);
+  border-left: #19a6e3cc 6px solid;
+}
+.task .all-tasks .one-task li{
+  list-style-type: circle;
+  list-style-position: inside;
+  text-align: start;
+  font-size: 15px;
+  margin:0px 15px;
+}
+.task .all-tasks .one-task .time{
+  text-align: end;
+  font-size: 12px;
+  margin:0px 10px;
+}

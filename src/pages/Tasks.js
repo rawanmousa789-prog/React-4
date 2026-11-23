@@ -1,4 +1,4 @@
-
+import './Tasks.css';
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 import {  useEffect } from 'react';
@@ -6,6 +6,7 @@ import {useNavigate} from "react-router";
 import {auth} from "../firebase/Config"
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Helmet } from "react-helmet-async";
+import { FaPlus } from "react-icons/fa6";
 
 export default function Tasks() {
   let navigate = useNavigate();
@@ -37,6 +38,7 @@ export default function Tasks() {
     if(!user.emailVerified){
       navigate("/");
     } 
+
     if(user.emailVerified){
       return (
     <div>
@@ -48,7 +50,52 @@ export default function Tasks() {
     />
       </Helmet>
       <Header/>
-        <main className="page-content"></main>
+        <main className='task'>
+          <section  className='layout'>
+          {/* filtered tasks */}
+          <section  className='btns flex'>
+            <select id="options">
+              <option value="all">All Tasks</option>
+              <option value="completed">Completed</option>
+              <option value="uncompleted">Uncompleted</option>
+            </select>
+            <button>Newest First</button>
+            <button>Oldest First</button>
+            <button className='add-task'>Add Task <FaPlus /> </button>
+          </section>
+
+
+          {/* all tasks */}
+          <section className='tasks-wrapper'>
+          <section className='flex all-tasks'>
+            <article className='one-task'>
+              <h2>New Tasks</h2>
+              <ul>
+                <li>Sub Task 1</li>
+                <li>Sub Task 2</li>
+              </ul>
+              <p className='time'>a day ago</p>
+            </article>
+            <article dir='auto' className='one-task'>
+              <h2>مهمات جديدة</h2>
+              <ul>
+                <li>مهمة فرعية 1</li>
+                <li>مهمة فرعية 2</li>
+              </ul>
+              <p className='time'>من يوم مضى</p>
+            </article>
+            <article className='one-task'>
+              <h2>New Tasks</h2>
+              <ul>
+                <li>Sub Task 1</li>
+                <li>Sub Task 2</li>
+              </ul>
+              <p className='time'>a day ago</p>
+            </article>
+          </section>
+          </section>
+          </section>
+        </main>
   
   <Footer/>
     </div>
