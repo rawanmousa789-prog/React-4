@@ -1,21 +1,27 @@
 import './Tasks.css';
 import Footer from "../component/Footer";
 import Header from "../component/Header";
-import {  useEffect } from 'react';
+import {  useEffect, useState } from 'react';
 import {Link, useNavigate} from "react-router";
 import {auth} from "../firebase/Config"
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Helmet } from "react-helmet-async";
 import { FaPlus } from "react-icons/fa6";
+import Modal from 'shared/Modal';
 
 export default function Tasks() {
   let navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     if(!user){
       navigate("/");
     }
   });
+
+  const closeModal = () => {
+    setShowModal(false);
+  }
   if (loading) {
       return (
         <div>
@@ -61,7 +67,11 @@ export default function Tasks() {
             </select>
             <button>Newest First</button>
             <button>Oldest First</button>
-            <button className='add-task'>Add Task <FaPlus /> </button>
+            <button className='add-task' onClick={() => {
+              setShowModal(true)
+            }
+            }>Add Task <FaPlus /> </button>
+            {showModal && <Modal closeModal={closeModal} />}
           </section>
 
 

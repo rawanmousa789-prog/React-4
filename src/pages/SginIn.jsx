@@ -7,6 +7,7 @@ import { auth } from "../firebase/Config";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import "./SignIn.css";
+import Modal from "shared/Modal";
 
 export default function SginIn() {
   let navigate = useNavigate();
@@ -67,6 +68,9 @@ export default function SginIn() {
                   // ..
                 });
   }
+  const closeModal = () => {
+    setShowModal(false);
+  }
   
   return (
     <div>
@@ -114,34 +118,7 @@ export default function SginIn() {
         </form>
 
         {showModal && 
-        <div className="parent-modal">
-          <form className={`modal`}>
-            <div className="close-btn" onClick={() => 
-              setShowModal(false)
-              }
-              >
-              X
-            </div>
-            <input onChange={(e) => {
-              e.preventDefault();
-              setResetPassword(e.target.value);
-            }
-            }
-            required type="email" placeholder="Your Email" />
-            <button
-              onClick={(e) => {
-                resetPassBTN(e);
-              }}
-            >
-              Reset Password
-            </button>
-            {resetEmail && (
-              <p className="reset-email">
-                Check your email to reset your password.
-              </p>
-            )}
-          </form>
-        </div>
+        <Modal closeModal={closeModal} />
         }
       </main>
       <Footer />
