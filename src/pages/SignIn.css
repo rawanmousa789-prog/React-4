@@ -1,12 +1,26 @@
-.reset-password{
+.parent-modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #0000007a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal{
   display: flex;
   align-items: center;
   justify-content: center;
   width: 350px;
   height: 280px;
   position: fixed;
+  transition: all 0.5s;
+  transition-behavior: smooth;
   /* display: none; */
-  scale: 0;
+  /* scale: 0; */
 }
 .show-reset-password{
   scale: 1;

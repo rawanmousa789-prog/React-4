@@ -15,7 +15,7 @@ export default function SginIn() {
   const [error, setError] = useState(false);
   const [messageError, setMessageError] = useState("");
   const [resetEmail, setResetEmail] = useState(false);
-  const [showForm, setShowForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [resetPassword, setResetPassword] = useState("");
   const signInBTN = (e) => {
     e.preventDefault();
@@ -105,35 +105,44 @@ export default function SginIn() {
           {error && <p>{messageError}</p>}
           <p
             className="reset-password-link"
-            onClick={() => setShowForm("show-reset-password")}
+            onClick={() => 
+              setShowModal(true)
+            }
           >
             Forgot Password?
           </p>
         </form>
 
-        <form className={`reset-password ${showForm}`}>
-          <div className="close-btn" onClick={() => setShowForm("")}>
-            X
-          </div>
-          <input onChange={(e) => {
-            e.preventDefault();
-            setResetPassword(e.target.value);
-          }
-          }
-          required type="email" placeholder="Your Email" />
-          <button
-            onClick={(e) => {
-              resetPassBTN(e);
-            }}
-          >
-            Reset Password
-          </button>
-          {resetEmail && (
-            <p className="reset-email">
-              Check your email to reset your password.
-            </p>
-          )}
-        </form>
+        {showModal && 
+        <div className="parent-modal">
+          <form className={`modal`}>
+            <div className="close-btn" onClick={() => 
+              setShowModal(false)
+              }
+              >
+              X
+            </div>
+            <input onChange={(e) => {
+              e.preventDefault();
+              setResetPassword(e.target.value);
+            }
+            }
+            required type="email" placeholder="Your Email" />
+            <button
+              onClick={(e) => {
+                resetPassBTN(e);
+              }}
+            >
+              Reset Password
+            </button>
+            {resetEmail && (
+              <p className="reset-email">
+                Check your email to reset your password.
+              </p>
+            )}
+          </form>
+        </div>
+        }
       </main>
       <Footer />
     </div>
