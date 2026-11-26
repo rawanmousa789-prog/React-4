@@ -8,6 +8,7 @@ import Data from "./context/Data";
 import SginIn from './pages/SginIn';
 import SginUp from './pages/SginUp';
 import Error404 from './pages/Error404';
+import EditTask from './pages/editTask/EditTask.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/SginUp",
     element: <SginUp />,
+  },
+  {
+    path: "/edit-task",
+    element: <EditTask/>,
   },
   {
     path: "*",

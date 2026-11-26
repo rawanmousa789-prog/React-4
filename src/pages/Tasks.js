@@ -2,7 +2,7 @@ import './Tasks.css';
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 import {  useEffect } from 'react';
-import {useNavigate} from "react-router";
+import {Link, useNavigate} from "react-router";
 import {auth} from "../firebase/Config"
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Helmet } from "react-helmet-async";
@@ -69,12 +69,14 @@ export default function Tasks() {
           <section className='tasks-wrapper'>
           <section className='flex all-tasks'>
             <article className='one-task'>
+              <Link to="/edit-task">
               <h2>New Tasks</h2>
               <ul>
                 <li>Sub Task 1</li>
                 <li>Sub Task 2</li>
               </ul>
               <p className='time'>a day ago</p>
+              </Link>
             </article>
             <article dir='auto' className='one-task'>
               <h2>مهمات جديدة</h2>

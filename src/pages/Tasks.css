@@ -63,6 +63,8 @@
   text-align: center;
   gap: 10px;
   transition: box-shadow 0.2s ease, border-left 0.2s ease;
+  cursor: pointer;
+
 }
 .task .all-tasks .one-task:hover{
   border: 3px solid #19a6e3;
